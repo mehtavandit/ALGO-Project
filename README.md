@@ -35,3 +35,7 @@ Feel free to modify the simulation parameters in the "simulations_params" list t
 
 ## Conclusion
 This code serves as a flexible tool for simulating and analyzing the Ford-Fulkerson algorithm's performance with various augmenting path algorithms in different network scenarios. It provides valuable insights into the efficiency and characteristics of different augmenting path strategies in the context of maximum flow problems.
+
+## Usage
+
+
