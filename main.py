@@ -326,6 +326,7 @@ def run_simulations(n, r, upper_cap):
         print("Mean Length: {}".format(mean_length))
         print("Mean Proprotional Length: {}".format(mean_proportional_length))
         print("Total Edges: {}".format(total_edges))
+        print()
 
 
 
