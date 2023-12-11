@@ -139,7 +139,7 @@ def FordFulkerson(graph, source, sink, augmenting_algorithm):
                     edge_found = True
                     break
             if not edge_found:
-                print(f"Error: No valid edge found for path {augmenting_path}")
+                print("Error: No valid edge found for path {}".format(augmenting_path))
                 break
 
     return paths, total_length, total_proportional_length
@@ -351,7 +351,7 @@ def run_simulations(n, r, upper_cap):
     # Calculate the width of the table
     table_width = max(len(line) for line in table_str.split('\n'))
 
-    simulation_line = f"Simulation for n={n}, r={r}, upperCap={upper_cap}\n"
+    simulation_line = "Simulation for n={}, r={}, upperCap={}\n".format(n, r, upper_cap)
     indentation = (table_width - len(simulation_line)) // 2
     print(' ' * indentation + simulation_line)
 
