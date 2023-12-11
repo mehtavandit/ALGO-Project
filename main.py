@@ -313,7 +313,6 @@ def run_simulations(n, r, upper_cap):
     augmenting_algorithms = [SAP, DFS, MaxCap, Random]
     total_edges = sum(len(edges) for edges in graph.edges.values())
 
-    print("Algorithms\t Paths\t ML\t MPL\t Total Edges")
     for algorithm in augmenting_algorithms:
         saved_graph = Graph.from_csv(n, r, upper_cap)  # Load graph from the CSV file
         start_time = time.time()
@@ -322,7 +321,12 @@ def run_simulations(n, r, upper_cap):
 
         mean_length = total_length / paths if paths > 0 else 0
         mean_proportional_length = total_proportional_length / paths if paths > 0 else 0
-        print("{}\t {}\t {}\t {}\t {}".format(algorithm.__name__, paths, mean_length, mean_proportional_length, total_edges))
+        print("Algorithm name: ".format(algorithm.__name__))
+        print("Paths: ".format(paths))
+        print("Mean Length: ".format(mean_length))
+        print("Mean Proprotional Length: ".format(mean_proportional_length))
+        print("Total Edges: ".format(total_edges))
+        
 
 
 if __name__ == "__main__":
