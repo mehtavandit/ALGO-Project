@@ -8,7 +8,7 @@ The code consists of the following components:
 
 **Graph Class**: Defines a graph with nodes and edges, and provides methods for adding nodes, edges, and displaying the graph. It also includes methods for saving and loading graphs to and from CSV files.
 
-****Euclidean Distance Function****: Calculates the Euclidean distance between two points in the graph.
+**Euclidean Distance Function**: Calculates the Euclidean distance between two points in the graph.
 
 **Graph Generation Function**: Generates a random graph with specified parameters, including the number of nodes (n), maximum distance between nodes (r), and upper capacity for edges.
 
@@ -16,10 +16,11 @@ The code consists of the following components:
 
 **Augmenting Path Algorithms**:
 
-**SAP (Shortest Augmenting Path**): Augmenting path algorithm based on shortest paths with capacity equal to 1.
+**SAP (Shortest Augmenting Path)**: Augmenting path algorithm based on shortest paths with capacity equal to 1.
 **DFS (Depth-First Search)**: Augmenting path algorithm using depth-first search.
 **MaxCap (Maximum Capacity)**: Augmenting path algorithm maximizing edge capacity.
 **Random**: Augmenting path algorithm with a random element.
+
 **Simulation Function**: Runs simulations for various graph sizes and parameters, measuring the performance of the Ford-Fulkerson algorithm with different augmenting path algorithms.
 
 **Main Section**: Contains simulation parameters and runs simulations for different graph sizes and characteristics.
