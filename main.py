@@ -7,6 +7,12 @@ from collections import deque
 import pandas as pd
 from prettytable import PrettyTable
 
+# Set display options to show all columns without truncation
+pd.set_option('display.max_columns', None)
+pd.set_option('display.expand_frame_repr', False)
+pd.set_option('display.max_colwidth', None)
+
+
 class Graph:
     def __init__(self):
         self.nodes = {}
@@ -87,8 +93,6 @@ def generate_graph(n, r, upper_cap):
                     if (u, v) not in graph.edges and (v, u) not in graph.edges:
                         graph.add_edge(v, u, random.randint(1, upper_cap))
 
-    # print(graph.nodes)
-    # print(graph.edges.keys())
 
     source = random.choice(list(graph.edges.keys()))
 
@@ -96,14 +100,8 @@ def generate_graph(n, r, upper_cap):
     queue = deque([(source, [source])])
 
     while queue:
-        # print("queue")
-        # print(queue)
         node, path = queue.popleft()
 
-        # print("node")
-        # print(node)
-        # print("path")
-        # print(path)
 
         if node not in visited:
             visited.add(node)
@@ -111,14 +109,10 @@ def generate_graph(n, r, upper_cap):
             for neighbor in neighbors:
                 if neighbor not in path:
                     new_path = path + [neighbor]
-                    # print(new_path)
                     queue.append((neighbor, new_path))
 
     sink = path[-1]
     graph.to_csv(n, r, upper_cap)
-    # print("final path")
-    # print(path)
-    # print(sink)
 
     return graph, source, sink
 
@@ -325,10 +319,7 @@ def run_simulations(n, r, upper_cap):
     graph, source, sink = generate_graph(n, r, upper_cap)
     augmenting_algorithms = [SAP, DFS, MaxCap, Random]
     total_edges = sum(len(edges) for edges in graph.edges.values())
-
     results = []
-    results_table = PrettyTable()
-    results_table.field_names = ['Algorithm', 'n', 'r', 'upperCap', 'paths', 'ML', 'MPL', 'total_edges']
     for algorithm in augmenting_algorithms:
         saved_graph = Graph.from_csv(n, r, upper_cap)  # Load graph from the CSV file
         start_time = time.time()
@@ -338,20 +329,33 @@ def run_simulations(n, r, upper_cap):
         mean_length = total_length / paths if paths > 0 else 0
         mean_proportional_length = total_proportional_length / paths if paths > 0 else 0
 
-        results_table.add_row([algorithm.__name__, n, r, upper_cap, paths, mean_length, mean_proportional_length, total_edges])
+        results.append({
+            'Algorithm': algorithm.__name__,
+            'n': n,
+            'r': r,
+            'upperCap': upper_cap,
+            'paths': paths,
+            'ML': mean_length,
+            'MPL': mean_proportional_length,
+            'total_edges': total_edges,
+            'elapsed_time': elapsed_time
+        })
 
-        # print(f"\nAlgorithm: {algorithm.__name__}")
-        # print(f"Paths: {paths}")
-        # print(f"Mean Length: {mean_length}")
-        # print(f"Mean Proportional Length: {mean_proportional_length}")
-        # print(f"Total Edges in the Graph: {total_edges}")
-        # print(f"Elapsed Time: {elapsed_time:.6f} seconds")
+        # Create a DataFrame from the results list
+    df = pd.DataFrame(results)
 
-    print(results_table)
-    text = f"Simulation for n={n}, r={r}, upperCap={upper_cap}\n\n"
-    table_width = len(str(results_table).split('\n')[0])  # Get the width of the table
-    indentation = (table_width - len(text)) // 2
-    print(' ' * indentation + text)
+    print(df)
+
+    table_str = df.to_string(index=False)
+
+    # Calculate the width of the table
+    table_width = max(len(line) for line in table_str.split('\n'))
+
+    simulation_line = f"Simulation for n={n}, r={r}, upperCap={upper_cap}\n"
+    indentation = (table_width - len(simulation_line)) // 2
+    print(' ' * indentation + simulation_line)
+
+
 
 if __name__ == "__main__":
     simulations_params = [
@@ -368,4 +372,5 @@ if __name__ == "__main__":
     ]
 
     for n, r, upper_cap in simulations_params:
+        # print(f"\nSimulation for n={n}, r={r}, upperCap={upper_cap}")
         run_simulations(n, r, upper_cap)
