@@ -1,6 +1,6 @@
 
-## Ford-Fulkerson Simulation with Various Augmenting Algorithms
-# Introduction
+# Ford-Fulkerson Simulation with Various Augmenting Algorithms
+## Introduction
 This Python code implements a simulation of the Ford-Fulkerson algorithm for maximum flow in a network. The simulation includes the use of different augmenting path algorithms such as Shortest Augmenting Path (SAP), Depth-First Search (DFS), Maximum Capacity (MaxCap), and a Random augmenting path algorithm.
 
 Code Structure
