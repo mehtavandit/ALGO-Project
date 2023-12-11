@@ -28,10 +28,10 @@ The code consists of the following components:
 Usage
 To run the simulations, execute the script, and the results for each simulation scenario will be printed, including the algorithm name, number of paths, mean length, mean proportional length, and total edges.
 
-Simulation Scenarios
+# Simulation Scenarios
 The code includes simulations for different graph sizes (n), maximum distances between nodes (r), and upper capacities for edges. These scenarios provide insights into the performance of the Ford-Fulkerson algorithm with different augmenting path algorithms under varying graph conditions.
 
 Feel free to modify the simulation parameters in the "simulations_params" list to explore additional scenarios.
 
-Conclusion
+# Conclusion
 This code serves as a flexible tool for simulating and analyzing the Ford-Fulkerson algorithm's performance with various augmenting path algorithms in different network scenarios. It provides valuable insights into the efficiency and characteristics of different augmenting path strategies in the context of maximum flow problems.
