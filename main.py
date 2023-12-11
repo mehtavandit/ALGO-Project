@@ -2,15 +2,8 @@ import csv
 import random
 import heapq
 import time
-import copy
 from collections import deque
-import pandas as pd
-from prettytable import PrettyTable
 
-# Set display options to show all columns without truncation
-pd.set_option('display.max_columns', None)
-pd.set_option('display.expand_frame_repr', False)
-pd.set_option('display.max_colwidth', None)
 
 
 class Graph:
@@ -319,7 +312,8 @@ def run_simulations(n, r, upper_cap):
     graph, source, sink = generate_graph(n, r, upper_cap)
     augmenting_algorithms = [SAP, DFS, MaxCap, Random]
     total_edges = sum(len(edges) for edges in graph.edges.values())
-    results = []
+
+    print("Algorithms\t Paths\t ML\t MPL\t Total Edges")
     for algorithm in augmenting_algorithms:
         saved_graph = Graph.from_csv(n, r, upper_cap)  # Load graph from the CSV file
         start_time = time.time()
@@ -328,33 +322,7 @@ def run_simulations(n, r, upper_cap):
 
         mean_length = total_length / paths if paths > 0 else 0
         mean_proportional_length = total_proportional_length / paths if paths > 0 else 0
-
-        results.append({
-            'Algorithm': algorithm.__name__,
-            'n': n,
-            'r': r,
-            'upperCap': upper_cap,
-            'paths': paths,
-            'ML': mean_length,
-            'MPL': mean_proportional_length,
-            'total_edges': total_edges,
-            'elapsed_time': elapsed_time
-        })
-
-        # Create a DataFrame from the results list
-    df = pd.DataFrame(results)
-
-    print(df)
-
-    table_str = df.to_string(index=False)
-
-    # Calculate the width of the table
-    table_width = max(len(line) for line in table_str.split('\n'))
-
-    simulation_line = "Simulation for n={}, r={}, upperCap={}\n".format(n, r, upper_cap)
-    indentation = (table_width - len(simulation_line)) // 2
-    print(' ' * indentation + simulation_line)
-
+        print("{}\t {}\t {}\t {}\t {}".format(algorithm.__name__, paths, mean_length, mean_proportional_length, total_edges))
 
 
 if __name__ == "__main__":
@@ -372,5 +340,5 @@ if __name__ == "__main__":
     ]
 
     for n, r, upper_cap in simulations_params:
-        # print(f"\nSimulation for n={n}, r={r}, upperCap={upper_cap}")
+        print("\nSimulation for n={}, r={}, upperCap={}".format(n, r, upper_cap))
         run_simulations(n, r, upper_cap)
