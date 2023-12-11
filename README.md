@@ -38,9 +38,8 @@ This code serves as a flexible tool for simulating and analyzing the Ford-Fulker
 
 ## Compilation and Run
 
-Login into the server computation.encs.concordia.ca
-
-Run the command git clone https://github.com/mehtavandit/ALGO-Project
-Go to the respective directory on the server and run the command git pull
-Run the command python3 main.py.
+Login into the server computation.encs.concordia.ca       
+Run the command git clone https://github.com/mehtavandit/ALGO-Project     
+Go to the respective directory on the server and run the command git pull      
+Run the command python3 main.py.      
 
