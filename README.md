@@ -16,10 +16,10 @@ The code consists of the following components:
 
 **Augmenting Path Algorithms**:
 
-**SAP (Shortest Augmenting Path)**: Augmenting path algorithm based on shortest paths with capacity equal to 1.
-**DFS (Depth-First Search)**: Augmenting path algorithm using depth-first search.
-**MaxCap (Maximum Capacity)**: Augmenting path algorithm maximizing edge capacity.
-**Random**: Augmenting path algorithm with a random element.
+**SAP (Shortest Augmenting Path)**: Augmenting path algorithm based on shortest paths with capacity equal to 1.     
+**DFS (Depth-First Search)**: Augmenting path algorithm using depth-first search.     
+**MaxCap (Maximum Capacity)**: Augmenting path algorithm maximizing edge capacity.     
+**Random**: Augmenting path algorithm with a random element.      
 
 **Simulation Function**: Runs simulations for various graph sizes and parameters, measuring the performance of the Ford-Fulkerson algorithm with different augmenting path algorithms.
 
